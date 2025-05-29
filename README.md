@@ -30,9 +30,9 @@
 
 ## 🛠 Tecnologias Utilizadas
 
-- **Frontend:** HTML5, CSS3, JavaScript
-- **Backend:** Node.js + Express
-- **Banco de Dados:** (Dependendo da versão: JSON/SQLite/Supabase)
+- **Frontend:** TypeScript, TailWind
+- **Backend:** Next.js + Express
+- **Banco de Dados:** (Dependendo da versão: JSON)
 - **Hospedagem:** [Render.com](https://render.com)
 
 ---
