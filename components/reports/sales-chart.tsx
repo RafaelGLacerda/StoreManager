@@ -1,0 +1,40 @@
+"use client"
+
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
+
+interface SalesChartProps {
+  data: Record<string, number>
+}
+
+export function SalesChart({ data }: SalesChartProps) {
+  const chartData = Object.entries(data).map(([month, value]) => ({
+    month,
+    value,
+  }))
+
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart data={chartData}>
+        <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
+        <XAxis dataKey="month" className="text-sm" />
+        <YAxis className="text-sm" />
+        <Tooltip
+          formatter={(value) => [`R$ ${Number(value).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`, "Vendas"]}
+          contentStyle={{
+            backgroundColor: "rgba(255, 255, 255, 0.95)",
+            border: "1px solid #e5e7eb",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          }}
+        />
+        <Bar dataKey="value" fill="url(#gradient)" radius={[4, 4, 0, 0]} />
+        <defs>
+          <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#8b5cf6" />
+          </linearGradient>
+        </defs>
+      </BarChart>
+    </ResponsiveContainer>
+  )
+}
